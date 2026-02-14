@@ -1,0 +1,47 @@
+/* Coral Red Theme for BizAI SplashScreen */
+
+.bg-coral-red {
+    background: #ff5e5b;
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(135deg, #ff5e5b 0%, #ffb199 100%);
+}
+
+.splash-bg-photo1 {
+    background: url('/assets/photo1.jpg') center center/cover no-repeat;
+    opacity: 0.15;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.splash-floating-img {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border-radius: 50%;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+.splash-title-float {
+    animation: floatTitle 2.5s ease-in-out infinite;
+}
+
+@keyframes floatTitle {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}

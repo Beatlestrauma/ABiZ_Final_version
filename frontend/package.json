@@ -1,0 +1,38 @@
+{
+  "name": "bizai-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "build:mobile": "vite build && npx cap sync",
+    "android:build": "npm run build:mobile && npx cap build android",
+    "android:run": "npx cap open android",
+    "android:sync": "npx cap sync android",
+    "lint": "echo \"no linter configured\""
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "axios": "^1.7.7",
+    "firebase": "^10.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-youtube": "^10.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.6"
+  }
+}

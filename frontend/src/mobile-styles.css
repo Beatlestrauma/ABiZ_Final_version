@@ -1,0 +1,56 @@
+/* =============================================
+   Mobile App Styles — scoped to actual mobile
+   ============================================= */
+
+/* Safe area support for devices with notches */
+@supports (padding: max(0px)) {
+    body[data-device="mobile"] {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+        padding-top: max(0px, env(safe-area-inset-top));
+    }
+}
+
+/* Prevent overscroll bounce on iOS (mobile only) */
+body[data-device="mobile"] {
+    overscroll-behavior-y: contain;
+    -webkit-touch-callout: none;
+}
+
+/* Text rendering */
+body,
+button,
+input,
+select,
+textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent zoom on iOS input focus (mobile only) */
+body[data-device="mobile"] input,
+body[data-device="mobile"] textarea,
+body[data-device="mobile"] select {
+    font-size: 16px;
+}
+
+/* Remove tap highlight (mobile only) */
+body[data-device="mobile"] * {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch targets (mobile only) */
+body[data-device="mobile"] button,
+body[data-device="mobile"] a {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Safe area helpers */
+.mobile-safe-area-bottom {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+}
+
+.mobile-safe-area-top {
+    padding-top: max(0px, env(safe-area-inset-top));
+}

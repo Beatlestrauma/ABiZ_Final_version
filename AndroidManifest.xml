@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bizai.app">
+
+    <!-- Internet permission for API calls -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- Camera permission for potential video features -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    
+    <!-- Microphone for podcast/audio features -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- Storage for downloads -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <!-- Network info for connection detection -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Optional: Location for local business news -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="true"
+        android:usesCleartextTraffic="false"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <activity
+            android:name="com.getcapacitor.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Firebase Content Provider -->
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.bizai.app.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
+    </application>
+
+</manifest>

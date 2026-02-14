@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BizAI</string>
+    <string name="title_activity_main">BizAI</string>
+    <string name="package_name">com.bizai.app</string>
+    <string name="custom_url_scheme">com.bizai.app</string>
+</resources>
