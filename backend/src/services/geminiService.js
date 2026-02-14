@@ -1,69 +1,54 @@
 import axios from 'axios';
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_API_URL = process.env.GROQ_API_URL || 'https://api.groq.com/openai/v1/chat/completions';
 
 class GeminiService {
   constructor() {
-    this.apiKey = GEMINI_API_KEY;
+    this.apiKey = GROQ_API_KEY;
     this.isConfigured = !!this.apiKey;
+    this.defaultModel = process.env.GROQ_MODEL || 'mixtral-8x7b-32768';
   }
 
   async generateContent(prompt, options = {}) {
     if (!this.isConfigured) {
-      throw new Error('Gemini API key not configured');
+      throw new Error('GROQ API key not configured');
     }
 
     try {
+      const body = {
+        model: this.defaultModel,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        max_tokens: options.maxTokens || 1024,
+        temperature: options.temperature || 0.7
+      };
+
       const response = await axios.post(
-        `${GEMINI_API_URL}?key=${this.apiKey}`,
-        {
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }],
-          generationConfig: {
-            temperature: options.temperature || 0.7,
-            topK: options.topK || 40,
-            topP: options.topP || 0.95,
-            maxOutputTokens: options.maxTokens || 1024,
-          },
-          safetySettings: [
-            {
-              category: "HARM_CATEGORY_HARASSMENT",
-              threshold: "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-              category: "HARM_CATEGORY_HATE_SPEECH",
-              threshold: "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-              category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-              threshold: "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-              category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-              threshold: "BLOCK_MEDIUM_AND_ABOVE"
-            }
-          ]
-        },
+        GROQ_API_URL,
+        body,
         {
           timeout: 30000,
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.apiKey}`
           }
         }
       );
 
-      if (response.data.candidates && response.data.candidates[0]) {
-        return response.data.candidates[0].content.parts[0].text;
-      } else {
-        throw new Error('No content generated');
+      // Parse OpenAI-compatible response format
+      if (response.data?.choices?.[0]?.message?.content) {
+        return response.data.choices[0].message.content;
       }
+
+      throw new Error('No content generated');
     } catch (error) {
-      console.error('Gemini API Error:', error.response?.data || error.message);
-      throw new Error(`Gemini API failed: ${error.response?.data?.error?.message || error.message}`);
+      console.error('GROQ API Error:', error.response?.data || error.message);
+      throw new Error(`GROQ API failed: ${error.response?.data?.error?.message || error.message}`);
     }
   }
 
