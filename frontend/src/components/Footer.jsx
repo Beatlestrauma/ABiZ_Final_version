@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-[#ffd6d2] mt-4 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-muted">
-          <p>© 2026 BizAI · Naga Shiva D, Kaushal Reddy S, Ranjith Raja B</p>
+          <p>© 2026 BizAI · Naga Shiva D, Kaushal Reddy S, Ranjith Raja B, Shivani R</p>
           <p>Ethical news · Transparent sources · Go Green</p>
         </div>
       </div>
