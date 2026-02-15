@@ -16,7 +16,7 @@ export default function Footer() {
               A
             </div>
             <span className="font-semibold text-sm text-[#1a1a1a]">
-              <span className="text-[#ff5e5b]">ABiZ</span>
+              <span className="text-[#ff5e5b]">ABiz</span>
             </span>
           </div>
           <div className="text-center sm:text-right">
