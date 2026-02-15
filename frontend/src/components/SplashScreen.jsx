@@ -47,7 +47,7 @@ export default function SplashScreen() {
         </div>
         
         {/* Footer */}
-        <div className="absolute bottom-8 left-0 w-full flex justify-center z-20">
+        <div className="absolute bottom-2 md:bottom-6 inset-x-0 flex justify-center z-20">
           <span className="text-white text-base font-semibold bg-white/15 px-8 py-3 rounded-full backdrop-blur-sm border border-white/30">Amrita School of Business</span>
         </div>
       </div>
