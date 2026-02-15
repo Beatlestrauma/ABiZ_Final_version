@@ -39,7 +39,7 @@ export default function Sidebar({ currentPage, onNavigate, isTablet = false }) {
         </div>
         <div className="flex flex-col">
           <span className="font-serif text-xl font-bold text-slate-900 leading-none">
-            Biz<span className="text-rose-500">AI</span>
+            A<span className="text-rose-500">Biz</span>
           </span>
           <span className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mt-0.5">CONNECT</span>
         </div>
