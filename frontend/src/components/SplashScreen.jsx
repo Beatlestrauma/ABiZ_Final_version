@@ -15,7 +15,7 @@ export default function SplashScreen() {
           </div>
         </div>
         {/* Floating ABiZ title */}
-        <h1 className="text-7xl font-extrabold text-white drop-shadow-lg splash-title-float mb-4">ABiZ</h1>
+        <h1 className="text-7xl font-extrabold text-white drop-shadow-lg splash-title-float mb-4">ABiz</h1>
         <p className="text-white text-2xl font-bold mb-2">Connecting Students to Industries</p>
         <p className="text-white/90 text-lg font-semibold mb-12">Career Intelligence • Business News • Learning Hub</p>
         
