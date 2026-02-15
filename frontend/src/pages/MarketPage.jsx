@@ -11,7 +11,8 @@ export default function MarketPage() {
     async function load() {
       try {
         setLoading(true);
-        const res = await axios.get('/api/market');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+        const res = await axios.get(`${apiUrl}/api/market`);
         if (!cancelled) {
           setData(res.data);
           setError(null);

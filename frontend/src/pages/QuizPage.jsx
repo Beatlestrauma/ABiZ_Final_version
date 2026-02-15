@@ -19,7 +19,8 @@ export default function QuizPage() {
     async function load() {
       try {
         setLoading(true);
-        const res = await axios.get('/api/quiz/daily');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+        const res = await axios.get(`${apiUrl}/api/quiz/daily`);
         if (!cancelled) {
           setQuiz(res.data);
           setError(null);

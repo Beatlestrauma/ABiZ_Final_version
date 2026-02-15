@@ -35,7 +35,8 @@ export function NewsProvider({ children }) {
       }
 
       // Fetch eco metrics
-      const ecoRes = await axios.get('/api/eco');
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const ecoRes = await axios.get(`${apiUrl}/api/eco`);
 
       setArticles(newsData.articles || []);
       setNewsStats(newsData.stats || null);

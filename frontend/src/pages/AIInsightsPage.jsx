@@ -14,7 +14,8 @@ export default function AIInsightsPage() {
     setAnalysisLoading(true);
     setError(null);
     try {
-      const res = await axios.get('/api/ai/insights');
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await axios.get(`${apiUrl}/api/ai/insights`);
       setData(res.data);
     } catch (err) {
       console.error('Failed to fetch AI insights:', err);
