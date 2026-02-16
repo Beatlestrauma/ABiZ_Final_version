@@ -196,7 +196,7 @@ export default function DailyBriefingPage({ selectedDomain: selectedDomainProp, 
       <header className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl md:text-3xl font-semibold text-[#1a1a1a] dark:text-white tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-semibold text-[#000000] dark:text-white tracking-tight">
               Daily Briefing
             </h1>
             <p className="text-sm text-muted mt-0.5">
