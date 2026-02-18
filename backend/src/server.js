@@ -32,8 +32,8 @@ await rssService.initDB();
 console.log('🚀 Fetching initial RSS feeds...');
 await rssService.fetchRSSFeeds();
 
-// Schedule RSS fetch every 15 minutes
-cron.schedule('*/15 * * * *', async () => {
+// Schedule RSS fetch every 30 minutes
+cron.schedule('*/30 * * * *', async () => {
     console.log('⏰ Scheduled RSS fetch triggered');
     await rssService.fetchRSSFeeds();
 });
