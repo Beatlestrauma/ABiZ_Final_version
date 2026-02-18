@@ -49,3 +49,4 @@ coverage/
 # Specific Large Files (if they exist and shouldn't be tracked)
 backend.zip
 *.zip
+backend/data/rss_cache.db 
