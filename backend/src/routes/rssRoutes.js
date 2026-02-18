@@ -1,7 +1,24 @@
+// TEMP: Clear all articles from the database (for debugging only)
 import express from 'express';
 import rssService from '../services/rssService.js';
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
 
 const router = express.Router();
+
+// TEMP: Clear all articles from the database (for debugging only)
+router.delete('/clear', async (req, res) => {
+  try {
+    const db = await open({
+      filename: "./data/rss_cache.db",
+      driver: sqlite3.Database
+    });
+    await db.run("DELETE FROM articles");
+    res.json({ message: 'All articles deleted' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to clear articles', details: err.message });
+  }
+});
 
 // Get articles with filters
 router.get('/articles', async (req, res) => {

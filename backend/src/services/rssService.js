@@ -156,6 +156,19 @@ export async function fetchRSSFeeds() {
           const imageUrl = extractImageUrl(item);
           const readMinutes = calculateReadMinutes(content);
 
+          // Log pubDate and link for debugging
+          console.log(`[RSS DEBUG] Source: ${source.name}`);
+          console.log(`[RSS DEBUG] Title: ${item.title}`);
+          console.log(`[RSS DEBUG] Link: ${item.link}`);
+          console.log(`[RSS DEBUG] pubDate (raw): ${item.pubDate}`);
+
+          // Normalize pubDate to ISO format if possible
+          let pubDate = new Date(item.pubDate);
+          if (isNaN(pubDate.getTime())) {
+            pubDate = new Date(); // fallback to now if invalid
+          }
+          const pubDateISO = pubDate.toISOString();
+
           await db.run(
             `
             INSERT OR IGNORE INTO articles
@@ -167,7 +180,7 @@ export async function fetchRSSFeeds() {
               item.link,
               content,
               summary,
-              item.pubDate || new Date().toISOString(),
+              pubDateISO,
               source.name,
               source.category,
               imageUrl,
